@@ -1,0 +1,37 @@
+name: Extract Zips
+
+on:
+  push:
+    branches:
+      - main  # Change this branch name as needed
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install unzip
+      run: sudo apt-get install -y unzip
+
+    - name: Find and extract zip files
+      run: |
+        for zipfile in *.zip; do
+          if [ -f "$zipfile" ]; then
+            unzip "$zipfile" -d "${zipfile%.zip}"
+          fi
+        done
+
+    - name: Commit extracted files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Extracted files from zip archives" || echo "No changes to commit"
+
+    - name: Push changes
+      run: git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

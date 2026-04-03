@@ -1,0 +1,7 @@
+Terminal log created: Sat Mar 21 11:01:49 PDT 2026
+Project: /Users/rfolden/GL/AAI/Week16/insurance-agent
+User: rfolden
+Shell: /bin/zsh
+
+Recent context:
+- This file confirms logging is working.

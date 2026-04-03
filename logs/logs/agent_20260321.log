@@ -1,0 +1,217 @@
+[2026-03-21 10:14:19] [INFO] [vector_store] - Initializing ChromaDB vector store
+[2026-03-21 10:14:20] [INFO] [vector_store] - Using OpenAI embedding model: text-embedding-3-small
+[2026-03-21 10:14:20] [INFO] [vector_store] - ChromaDB collection 'insurance_policies' ready
+[2026-03-21 10:14:20] [INFO] [vector_store] - Current document count: 0
+[2026-03-21 10:14:20] [INFO] [graph] - 🏗️ Building LangGraph workflow
+[2026-03-21 10:14:20] [INFO] [graph] - ✅ LangGraph workflow compiled successfully
+[2026-03-21 10:14:22] [INFO] [vector_store] - Loading policy PDF: ./data/policy.pdf
+[2026-03-21 10:14:22] [INFO] [vector_store] - PDF has 28 pages
+[2026-03-21 10:14:22] [INFO] [vector_store] - Extracted 213 chunks from PDF
+[2026-03-21 10:14:22] [INFO] [vector_store] - Adding chunks to vector store (embeddings generated automatically)
+[2026-03-21 10:14:24] [INFO] [vector_store] - Successfully added 213 chunks to vector store
+[2026-03-21 10:14:24] [INFO] [main] - Vector store initialized successfully
+[2026-03-21 10:32:06] [INFO] [main] - ================================================================================
+[2026-03-21 10:32:06] [INFO] [main] - 🚀 NEW CLAIM PROCESSING REQUEST
+[2026-03-21 10:32:06] [INFO] [main] - Claim ID: CLM-2026-AUTO-001
+[2026-03-21 10:32:06] [INFO] [main] - Timestamp: 2026-03-21 10:32:06
+[2026-03-21 10:32:06] [INFO] [main] - ================================================================================
+[2026-03-21 10:32:06] [INFO] [main] - 🎯 Invoking LangGraph workflow...
+[2026-03-21 10:32:06] [INFO] [graph] - 📍 NODE: parse_claim_node - Starting claim parsing
+[2026-03-21 10:32:06] [INFO] [tools] - 🔧 TOOL: parse_claim - Processing claim
+[2026-03-21 10:32:08] [INFO] [tools] - ✅ Parsed claim ID: CLM-2026-AUTO-001
+[2026-03-21 10:32:08] [INFO] [graph] - 📍 NODE: validate_claim_node - Validating claim
+[2026-03-21 10:32:08] [INFO] [tools] - 🔧 TOOL: is_valid_query - Validating claim
+[2026-03-21 10:32:09] [INFO] [tools] - ✅ Claim is VALID
+[2026-03-21 10:32:09] [INFO] [graph] - ✅ Routing to policy retrieval (claim is valid)
+[2026-03-21 10:32:09] [INFO] [graph] - 📍 NODE: generate_queries_node - Generating search queries
+[2026-03-21 10:32:09] [INFO] [tools] - 🔧 TOOL: generate_policy_queries - Creating search queries
+[2026-03-21 10:32:10] [INFO] [tools] - ✅ Generated 3 policy queries
+[2026-03-21 10:32:10] [INFO] [tools] -    Query 1: auto insurance policy coverage for synthetic oil change and standard oil filter replacement
+[2026-03-21 10:32:10] [INFO] [tools] -    Query 2: vendor requirements for auto repair claims in insurance policies
+[2026-03-21 10:32:10] [INFO] [tools] -    Query 3: claim amount limits for auto repair services in insurance policies
+[2026-03-21 10:32:10] [INFO] [graph] - 📍 NODE: retrieve_policy_node - Retrieving policy information
+[2026-03-21 10:32:10] [INFO] [tools] - 🔧 TOOL: retrieve_policy_text - Retrieving from vector store
+[2026-03-21 10:32:10] [INFO] [tools] -    Searching for: auto insurance policy coverage for synthetic oil change and ...
+[2026-03-21 10:32:10] [INFO] [vector_store] - Retrieving policy text for query: auto insurance policy coverage for synthetic oil change and standard oil filter replacement...
+[2026-03-21 10:32:11] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:32:11] [INFO] [tools] -    Searching for: vendor requirements for auto repair claims in insurance poli...
+[2026-03-21 10:32:11] [INFO] [vector_store] - Retrieving policy text for query: vendor requirements for auto repair claims in insurance policies...
+[2026-03-21 10:32:11] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:32:11] [INFO] [tools] -    Searching for: claim amount limits for auto repair services in insurance po...
+[2026-03-21 10:32:11] [INFO] [vector_store] - Retrieving policy text for query: claim amount limits for auto repair services in insurance policies...
+[2026-03-21 10:32:12] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:32:12] [INFO] [tools] - ✅ Retrieved 4286 characters of policy text
+[2026-03-21 10:32:12] [INFO] [graph] - 📍 NODE: recommendation_node - Generating recommendation
+[2026-03-21 10:32:12] [INFO] [tools] - 🔧 TOOL: generate_recommendation - Analyzing claim
+[2026-03-21 10:32:14] [INFO] [tools] - ✅ Recommendation: DENY
+[2026-03-21 10:32:14] [INFO] [graph] - 📍 NODE: price_check_node - Checking prices
+[2026-03-21 10:32:14] [INFO] [graph] - ✅ Claim amount acceptable: $75.0
+[2026-03-21 10:32:14] [INFO] [graph] - 📍 NODE: finalize_decision_node - Finalizing decision
+[2026-03-21 10:32:14] [INFO] [tools] - 🔧 TOOL: finalize_decision - Making final decision
+[2026-03-21 10:32:17] [INFO] [tools] - ✅ FINAL DECISION: DENIED
+[2026-03-21 10:32:17] [INFO] [main] - ✅ Workflow completed. Final decision: DENIED
+[2026-03-21 10:32:17] [INFO] [main] - ================================================================================
+[2026-03-21 10:37:41] [INFO] [main] - ================================================================================
+[2026-03-21 10:37:41] [INFO] [main] - 🚀 NEW CLAIM PROCESSING REQUEST
+[2026-03-21 10:37:41] [INFO] [main] - Claim ID: CLM-2026-AUTO-001
+[2026-03-21 10:37:41] [INFO] [main] - Timestamp: 2026-03-21 10:37:41
+[2026-03-21 10:37:41] [INFO] [main] - ================================================================================
+[2026-03-21 10:37:41] [INFO] [main] - 🎯 Invoking LangGraph workflow...
+[2026-03-21 10:37:41] [INFO] [graph] - 📍 NODE: parse_claim_node - Starting claim parsing
+[2026-03-21 10:37:41] [INFO] [tools] - 🔧 TOOL: parse_claim - Processing claim
+[2026-03-21 10:37:43] [INFO] [tools] - ✅ Parsed claim ID: CLM-2026-AUTO-001
+[2026-03-21 10:37:43] [INFO] [graph] - 📍 NODE: validate_claim_node - Validating claim
+[2026-03-21 10:37:43] [INFO] [tools] - 🔧 TOOL: is_valid_query - Validating claim
+[2026-03-21 10:37:44] [INFO] [tools] - ✅ Claim is VALID
+[2026-03-21 10:37:44] [INFO] [graph] - ✅ Routing to policy retrieval (claim is valid)
+[2026-03-21 10:37:44] [INFO] [graph] - 📍 NODE: generate_queries_node - Generating search queries
+[2026-03-21 10:37:44] [INFO] [tools] - 🔧 TOOL: generate_policy_queries - Creating search queries
+[2026-03-21 10:37:45] [INFO] [tools] - ✅ Generated 3 policy queries
+[2026-03-21 10:37:45] [INFO] [tools] -    Query 1: auto repair service coverage policy
+[2026-03-21 10:37:45] [INFO] [tools] -    Query 2: vendor requirements for auto repair claims
+[2026-03-21 10:37:45] [INFO] [tools] -    Query 3: claim amount limits for vehicle maintenance services
+[2026-03-21 10:37:45] [INFO] [graph] - 📍 NODE: retrieve_policy_node - Retrieving policy information
+[2026-03-21 10:37:45] [INFO] [tools] - 🔧 TOOL: retrieve_policy_text - Retrieving from vector store
+[2026-03-21 10:37:45] [INFO] [tools] -    Searching for: auto repair service coverage policy...
+[2026-03-21 10:37:45] [INFO] [vector_store] - Retrieving policy text for query: auto repair service coverage policy...
+[2026-03-21 10:37:45] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:37:45] [INFO] [tools] -    Searching for: vendor requirements for auto repair claims...
+[2026-03-21 10:37:45] [INFO] [vector_store] - Retrieving policy text for query: vendor requirements for auto repair claims...
+[2026-03-21 10:37:46] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:37:46] [INFO] [tools] -    Searching for: claim amount limits for vehicle maintenance services...
+[2026-03-21 10:37:46] [INFO] [vector_store] - Retrieving policy text for query: claim amount limits for vehicle maintenance services...
+[2026-03-21 10:37:46] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:37:46] [INFO] [tools] - ✅ Retrieved 4218 characters of policy text
+[2026-03-21 10:37:46] [INFO] [graph] - 📍 NODE: recommendation_node - Generating recommendation
+[2026-03-21 10:37:46] [INFO] [tools] - 🔧 TOOL: generate_recommendation - Analyzing claim
+[2026-03-21 10:37:49] [INFO] [tools] - ✅ Recommendation: DENY
+[2026-03-21 10:37:49] [INFO] [graph] - 📍 NODE: price_check_node - Checking prices
+[2026-03-21 10:37:49] [INFO] [graph] - ✅ Claim amount acceptable: $75.0
+[2026-03-21 10:37:49] [INFO] [graph] - 📍 NODE: finalize_decision_node - Finalizing decision
+[2026-03-21 10:37:49] [INFO] [tools] - 🔧 TOOL: finalize_decision - Making final decision
+[2026-03-21 10:37:52] [INFO] [tools] - ✅ FINAL DECISION: DENIED
+[2026-03-21 10:37:52] [INFO] [main] - ✅ Workflow completed. Final decision: DENIED
+[2026-03-21 10:37:52] [INFO] [main] - ================================================================================
+[2026-03-21 10:42:47] [INFO] [main] - ================================================================================
+[2026-03-21 10:42:47] [INFO] [main] - 🚀 NEW CLAIM PROCESSING REQUEST
+[2026-03-21 10:42:47] [INFO] [main] - Claim ID: CLM-2026-AUTO-001
+[2026-03-21 10:42:47] [INFO] [main] - Timestamp: 2026-03-21 10:42:47
+[2026-03-21 10:42:47] [INFO] [main] - ================================================================================
+[2026-03-21 10:42:47] [INFO] [main] - 🎯 Invoking LangGraph workflow...
+[2026-03-21 10:42:47] [INFO] [graph] - 📍 NODE: parse_claim_node - Starting claim parsing
+[2026-03-21 10:42:47] [INFO] [tools] - 🔧 TOOL: parse_claim - Processing claim
+[2026-03-21 10:42:52] [INFO] [tools] - ✅ Parsed claim ID: CLM-2026-AUTO-001
+[2026-03-21 10:42:52] [INFO] [graph] - 📍 NODE: validate_claim_node - Validating claim
+[2026-03-21 10:42:52] [INFO] [tools] - 🔧 TOOL: is_valid_query - Validating claim
+[2026-03-21 10:42:53] [INFO] [tools] - ✅ Claim is VALID
+[2026-03-21 10:42:53] [INFO] [graph] - ✅ Routing to policy retrieval (claim is valid)
+[2026-03-21 10:42:53] [INFO] [graph] - 📍 NODE: generate_queries_node - Generating search queries
+[2026-03-21 10:42:53] [INFO] [tools] - 🔧 TOOL: generate_policy_queries - Creating search queries
+[2026-03-21 10:42:54] [INFO] [tools] - ✅ Generated 3 policy queries
+[2026-03-21 10:42:54] [INFO] [tools] -    Query 1: auto insurance policy coverage for vehicle maintenance services
+[2026-03-21 10:42:54] [INFO] [tools] -    Query 2: vendor requirements for auto repair claims
+[2026-03-21 10:42:54] [INFO] [tools] -    Query 3: claim amount limits for automotive repair services
+[2026-03-21 10:42:54] [INFO] [graph] - 📍 NODE: retrieve_policy_node - Retrieving policy information
+[2026-03-21 10:42:54] [INFO] [tools] - 🔧 TOOL: retrieve_policy_text - Retrieving from vector store
+[2026-03-21 10:42:54] [INFO] [tools] -    Searching for: auto insurance policy coverage for vehicle maintenance servi...
+[2026-03-21 10:42:54] [INFO] [vector_store] - Retrieving policy text for query: auto insurance policy coverage for vehicle maintenance services...
+[2026-03-21 10:42:55] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:42:55] [INFO] [tools] -    Searching for: vendor requirements for auto repair claims...
+[2026-03-21 10:42:55] [INFO] [vector_store] - Retrieving policy text for query: vendor requirements for auto repair claims...
+[2026-03-21 10:42:55] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:42:55] [INFO] [tools] -    Searching for: claim amount limits for automotive repair services...
+[2026-03-21 10:42:55] [INFO] [vector_store] - Retrieving policy text for query: claim amount limits for automotive repair services...
+[2026-03-21 10:42:56] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:42:56] [INFO] [tools] - ✅ Retrieved 4221 characters of policy text
+[2026-03-21 10:42:56] [INFO] [graph] - 📍 NODE: recommendation_node - Generating recommendation
+[2026-03-21 10:42:56] [INFO] [tools] - 🔧 TOOL: generate_recommendation - Analyzing claim
+[2026-03-21 10:42:59] [INFO] [tools] - ✅ Recommendation: APPROVE
+[2026-03-21 10:42:59] [INFO] [graph] - 📍 NODE: price_check_node - Checking prices
+[2026-03-21 10:42:59] [INFO] [graph] - ✅ Claim amount acceptable: $500.0
+[2026-03-21 10:42:59] [INFO] [graph] - 📍 NODE: finalize_decision_node - Finalizing decision
+[2026-03-21 10:42:59] [INFO] [tools] - 🔧 TOOL: finalize_decision - Making final decision
+[2026-03-21 10:43:02] [INFO] [tools] - ✅ FINAL DECISION: APPROVED
+[2026-03-21 10:43:02] [INFO] [main] - ✅ Workflow completed. Final decision: APPROVED
+[2026-03-21 10:43:02] [INFO] [main] - ================================================================================
+[2026-03-21 10:53:39] [INFO] [main] - ================================================================================
+[2026-03-21 10:53:39] [INFO] [main] - 🚀 NEW CLAIM PROCESSING REQUEST
+[2026-03-21 10:53:39] [INFO] [main] - Claim ID: CLM-2026-AUTO-002
+[2026-03-21 10:53:39] [INFO] [main] - Timestamp: 2026-03-21 10:53:39
+[2026-03-21 10:53:39] [INFO] [main] - ================================================================================
+[2026-03-21 10:53:39] [INFO] [main] - 🎯 Invoking LangGraph workflow...
+[2026-03-21 10:53:39] [INFO] [graph] - 📍 NODE: parse_claim_node - Starting claim parsing
+[2026-03-21 10:53:39] [INFO] [tools] - 🔧 TOOL: parse_claim - Processing claim
+[2026-03-21 10:53:41] [INFO] [tools] - ✅ Parsed claim ID: CLM-2026-AUTO-002
+[2026-03-21 10:53:41] [INFO] [graph] - 📍 NODE: validate_claim_node - Validating claim
+[2026-03-21 10:53:41] [INFO] [tools] - 🔧 TOOL: is_valid_query - Validating claim
+[2026-03-21 10:53:42] [INFO] [tools] - ✅ Claim is VALID
+[2026-03-21 10:53:42] [INFO] [graph] - ✅ Routing to policy retrieval (claim is valid)
+[2026-03-21 10:53:42] [INFO] [graph] - 📍 NODE: generate_queries_node - Generating search queries
+[2026-03-21 10:53:42] [INFO] [tools] - 🔧 TOOL: generate_policy_queries - Creating search queries
+[2026-03-21 10:53:44] [INFO] [tools] - ✅ Generated 3 policy queries
+[2026-03-21 10:53:44] [INFO] [tools] -    Query 1: auto insurance policy coverage for collision repair services
+[2026-03-21 10:53:44] [INFO] [tools] -    Query 2: vendor requirements for auto repair claims in insurance policies
+[2026-03-21 10:53:44] [INFO] [tools] -    Query 3: claim amount limits for collision repair in auto insurance policies
+[2026-03-21 10:53:44] [INFO] [graph] - 📍 NODE: retrieve_policy_node - Retrieving policy information
+[2026-03-21 10:53:44] [INFO] [tools] - 🔧 TOOL: retrieve_policy_text - Retrieving from vector store
+[2026-03-21 10:53:44] [INFO] [tools] -    Searching for: auto insurance policy coverage for collision repair services...
+[2026-03-21 10:53:44] [INFO] [vector_store] - Retrieving policy text for query: auto insurance policy coverage for collision repair services...
+[2026-03-21 10:53:45] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:53:45] [INFO] [tools] -    Searching for: vendor requirements for auto repair claims in insurance poli...
+[2026-03-21 10:53:45] [INFO] [vector_store] - Retrieving policy text for query: vendor requirements for auto repair claims in insurance policies...
+[2026-03-21 10:53:45] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:53:45] [INFO] [tools] -    Searching for: claim amount limits for collision repair in auto insurance p...
+[2026-03-21 10:53:45] [INFO] [vector_store] - Retrieving policy text for query: claim amount limits for collision repair in auto insurance policies...
+[2026-03-21 10:53:46] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:53:46] [INFO] [tools] - ✅ Retrieved 4050 characters of policy text
+[2026-03-21 10:53:46] [INFO] [graph] - 📍 NODE: recommendation_node - Generating recommendation
+[2026-03-21 10:53:46] [INFO] [tools] - 🔧 TOOL: generate_recommendation - Analyzing claim
+[2026-03-21 10:53:50] [INFO] [tools] - ✅ Recommendation: APPROVE
+[2026-03-21 10:53:50] [INFO] [graph] - 📍 NODE: price_check_node - Checking prices
+[2026-03-21 10:53:50] [INFO] [graph] - ✅ Claim amount acceptable: $1850.0
+[2026-03-21 10:53:50] [INFO] [graph] - 📍 NODE: finalize_decision_node - Finalizing decision
+[2026-03-21 10:53:50] [INFO] [tools] - 🔧 TOOL: finalize_decision - Making final decision
+[2026-03-21 10:53:52] [INFO] [tools] - ✅ FINAL DECISION: APPROVED
+[2026-03-21 10:53:52] [INFO] [main] - ✅ Workflow completed. Final decision: APPROVED
+[2026-03-21 10:53:52] [INFO] [main] - ================================================================================
+[2026-03-21 10:54:32] [INFO] [main] - ================================================================================
+[2026-03-21 10:54:32] [INFO] [main] - 🚀 NEW CLAIM PROCESSING REQUEST
+[2026-03-21 10:54:32] [INFO] [main] - Claim ID: CLM-2026-AUTO-002
+[2026-03-21 10:54:32] [INFO] [main] - Timestamp: 2026-03-21 10:54:32
+[2026-03-21 10:54:32] [INFO] [main] - ================================================================================
+[2026-03-21 10:54:32] [INFO] [main] - 🎯 Invoking LangGraph workflow...
+[2026-03-21 10:54:32] [INFO] [graph] - 📍 NODE: parse_claim_node - Starting claim parsing
+[2026-03-21 10:54:32] [INFO] [tools] - 🔧 TOOL: parse_claim - Processing claim
+[2026-03-21 10:54:39] [INFO] [tools] - ✅ Parsed claim ID: CLM-2026-AUTO-002
+[2026-03-21 10:54:39] [INFO] [graph] - 📍 NODE: validate_claim_node - Validating claim
+[2026-03-21 10:54:39] [INFO] [tools] - 🔧 TOOL: is_valid_query - Validating claim
+[2026-03-21 10:54:40] [INFO] [tools] - ✅ Claim is VALID
+[2026-03-21 10:54:40] [INFO] [graph] - ✅ Routing to policy retrieval (claim is valid)
+[2026-03-21 10:54:40] [INFO] [graph] - 📍 NODE: generate_queries_node - Generating search queries
+[2026-03-21 10:54:40] [INFO] [tools] - 🔧 TOOL: generate_policy_queries - Creating search queries
+[2026-03-21 10:54:41] [INFO] [tools] - ✅ Generated 3 policy queries
+[2026-03-21 10:54:41] [INFO] [tools] -    Query 1: auto insurance policy coverage for collision repair services
+[2026-03-21 10:54:41] [INFO] [tools] -    Query 2: vendor requirements for auto repair claims
+[2026-03-21 10:54:41] [INFO] [tools] -    Query 3: claim amount limits for vehicle repair under auto insurance policies
+[2026-03-21 10:54:41] [INFO] [graph] - 📍 NODE: retrieve_policy_node - Retrieving policy information
+[2026-03-21 10:54:41] [INFO] [tools] - 🔧 TOOL: retrieve_policy_text - Retrieving from vector store
+[2026-03-21 10:54:41] [INFO] [tools] -    Searching for: auto insurance policy coverage for collision repair services...
+[2026-03-21 10:54:41] [INFO] [vector_store] - Retrieving policy text for query: auto insurance policy coverage for collision repair services...
+[2026-03-21 10:54:42] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:54:42] [INFO] [tools] -    Searching for: vendor requirements for auto repair claims...
+[2026-03-21 10:54:42] [INFO] [vector_store] - Retrieving policy text for query: vendor requirements for auto repair claims...
+[2026-03-21 10:54:42] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:54:42] [INFO] [tools] -    Searching for: claim amount limits for vehicle repair under auto insurance ...
+[2026-03-21 10:54:42] [INFO] [vector_store] - Retrieving policy text for query: claim amount limits for vehicle repair under auto insurance policies...
+[2026-03-21 10:54:43] [INFO] [vector_store] - Retrieved 3 relevant chunks
+[2026-03-21 10:54:43] [INFO] [tools] - ✅ Retrieved 4220 characters of policy text
+[2026-03-21 10:54:43] [INFO] [graph] - 📍 NODE: recommendation_node - Generating recommendation
+[2026-03-21 10:54:43] [INFO] [tools] - 🔧 TOOL: generate_recommendation - Analyzing claim
+[2026-03-21 10:54:45] [INFO] [tools] - ✅ Recommendation: APPROVE
+[2026-03-21 10:54:45] [INFO] [graph] - 📍 NODE: price_check_node - Checking prices
+[2026-03-21 10:54:45] [WARNING] [graph] - ⚠️ High claim amount: $12000.0
+[2026-03-21 10:54:45] [INFO] [graph] - 📍 NODE: finalize_decision_node - Finalizing decision
+[2026-03-21 10:54:45] [INFO] [tools] - 🔧 TOOL: finalize_decision - Making final decision
+[2026-03-21 10:54:47] [INFO] [tools] - ✅ FINAL DECISION: REQUIRES_REVIEW
+[2026-03-21 10:54:47] [INFO] [main] - ✅ Workflow completed. Final decision: REQUIRES_REVIEW
+[2026-03-21 10:54:47] [INFO] [main] - ================================================================================

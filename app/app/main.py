@@ -53,7 +53,7 @@ if not any(isinstance(h, StreamlitLogHandler) for h in logger.handlers):
 
 # Page configuration
 st.set_page_config(
-    page_title="Insurance Claims Processing Agent",
+    page_title="Updated Insurance Claims Processing Agent",
     page_icon="🏥",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -176,7 +176,7 @@ def main():
     """Main Streamlit application"""
     
     # Header
-    st.markdown('<div class="main-header">🏥 Insurance Claims Processing Agent</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">🏥 Updated Insurance Claims Processing Agent</div>', unsafe_allow_html=True)
     st.markdown("---")
     
     # Initialize vector store
@@ -186,10 +186,10 @@ def main():
     with st.sidebar:
         st.header("ℹ️ About")
         st.write("""
-        This AI agent automatically processes auto insurance claims using:
+        This AI agent will automatically process auto insurance claims using:
         - **LangGraph** for workflow orchestration
         - **RAG** for policy retrieval
-        - **GPT-4o-mini** for intelligent decision making
+        - **GPT-4o-mini** (Or other LLM) for intelligent claims decision making
         """)
         
         st.header("📊 System Status")
@@ -205,17 +205,17 @@ def main():
     
     # === TAB 1: Manual Entry ===
     with tab1:
-        st.subheader("Enter Claim Details Manually")
+        st.subheader("For Entering Claim Details Manually")
         
         col1, col2 = st.columns(2)
         
         with col1:
-            claim_id = st.text_input("Claim ID *", placeholder="e.g., CLM-2026-001")
-            policy_holder = st.text_input("Policy Holder Name *", placeholder="e.g., John Doe")
-            vendor_name = st.text_input("Vendor/Service Provider *", placeholder="e.g., AutoFix Garage")
+            claim_id = st.text_input("Claim ID Num (*)", placeholder="e.g., CLM-2026-010")
+            policy_holder = st.text_input("Policy Holder Name (*)", placeholder="e.g., Jane Doe")
+            vendor_name = st.text_input("Service/Vendor Provider (*)", placeholder="e.g., Fix-R-Us Garage")
         
         with col2:
-            total_amount = st.number_input("Total Claim Amount ($) *", min_value=0.0, step=10.0, value=0.0)
+            total_amount = st.number_input("Total Claim Dollar Amount ($) *", min_value=0.0, step=10.0, value=0.0)
         
         st.markdown("**Invoice Items**")
         
@@ -227,7 +227,7 @@ def main():
             col_item, col_amount, col_remove = st.columns([3, 2, 1])
             
             with col_item:
-                item_desc = st.text_input(f"Item Description", value=item["item"], key=f"item_desc_{i}", placeholder="e.g., Engine Repair")
+                item_desc = st.text_input(f"Description of Item", value=item["item"], key=f"item_desc_{i}", placeholder="e.g., Engine Repair")
             
             with col_amount:
                 item_amount = st.number_input(f"Amount ($)", value=item["amount"], min_value=0.0, step=10.0, key=f"item_amount_{i}")
@@ -248,7 +248,7 @@ def main():
         if st.button("🚀 Process Claim", type="primary", use_container_width=True):
             # Validate inputs
             if not claim_id or not policy_holder or not vendor_name:
-                st.error("❌ Please fill in all required fields marked with *")
+                st.error("❌ Please fill in all required fields marked with (*)")
                 return
             
             if total_amount <= 0:
@@ -265,12 +265,12 @@ def main():
             }
             
             # Process claim
-            with st.spinner("🔄 Processing claim through AI agent..."):
+            with st.spinner("🔄 Processing claim through AI agent......"):
                 try:
                     result = process_claim(claim_data)
                     
                     # Display results
-                    st.success("✅ Claim processing completed!")
+                    st.success("✅ Claim processing COMPLETED!")
                     
                     # Display logs
                     display_logs()
@@ -309,7 +309,7 @@ def main():
     with tab2:
         st.subheader("Upload Claim JSON File")
         
-        uploaded_file = st.file_uploader("Choose a JSON file", type=["json"])
+        uploaded_file = st.file_uploader("Choose a JSON file to upload", type=["json"])
         
         if uploaded_file is not None:
             try:

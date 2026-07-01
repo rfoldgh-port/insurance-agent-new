@@ -9,9 +9,9 @@ Welcome to an AI-powered insurance claims processing system using **LangGraph**,
 - 📊 **FEATURE: Interactive UI**: Streamlit interface for manual entry or JSON upload
 - 🤖 **FEATURE: LangGraph Workflow**: Structured multi-step agent workflow
 
-🐳 **FEATURE:Docker Support**: Easy deployment with Docker
+🐳 **FEATURE: Docker Support**: Easy deployment with Docker
 
-- 📝 **FEATURE:Detailed Logging**: Complete audit trail of all agent decisions
+- 📝 **FEATURE: Detailed Logging**: Complete audit trail of all agent decisions
 - 
 
 ## 📋 System Requirements
@@ -66,11 +66,7 @@ Welcome to an AI-powered insurance claims processing system using **LangGraph**,
         OPENAI_BASE_URL="https....../v1"    #  Add your OpenAI Base URL
 
 
-
-
-
-### II Deploy on AWS EC2 Instance (Clone GitHub  →  Build Docker Image  →  Docker Run)
-
+### II. Deploy on AWS EC2 Instance (Clone GitHub  →  Build Docker Image  →  Docker Run)
 
 ## Steps for Building the Docker Image on your AWS EC2 Instance
 
@@ -90,7 +86,6 @@ Welcome to an AI-powered insurance claims processing system using **LangGraph**,
 <br>**Note:** (Preferred but Optional for this demonstration - Restrict SSH to your IP address for security)
 ​
 8. **Launch Instance** - Review your configuration and click "Launch Instance"
-
 
 ## Connect to Your EC2 Instance
 
@@ -153,7 +148,6 @@ sudo docker run -d -p 80:8501 insurance-agent:v1
 
 
 ### III. Use Pre-Built Docker Image from Docker Hub (Docker Image Pull  →  Docker Run)
-
 
 ## Steps for pulling the pre-build Docker Image from Docker Hub in your Instance
 

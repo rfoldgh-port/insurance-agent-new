@@ -1,4 +1,4 @@
-# 🏥 Welcome to the New Insurance Claims Processing Agent
+# 🏥 Welcome to the New Insurance Claims Processing Agent (Auth: Richard Foldenauer)
 
 Welcome to an AI-powered insurance claims processing system using **LangGraph**, **RAG**, and **GPT-4o-mini** to automate claim validation, policy retrieval, and decision-making.
 
